@@ -1,0 +1,220 @@
+//exercise 1
+// export interface User {
+// name:string,
+// age:number,
+// occupation:string
+// } ;
+
+// export const users: User[] = [
+//     {
+//         name: 'Max Mustermann',
+//         age: 25,
+//         occupation: 'Chimney sweep'
+//     },
+//     {
+//         name: 'Kate Müller',
+//         age: 23,
+//         occupation: 'Astronaut'
+//     }
+// ];
+
+// export function logPerson(user: User) {
+//     console.log(` - ${user.name}, ${user.age}`);
+// }
+
+// console.log('Users:');
+// users.forEach(logPerson);
+
+// console.log("GODisGOOD *2");
+
+//------------------------------------------------------
+// //exercise2
+// export interface User {
+//     name: string;
+//     age: number;
+//     occupation?: string;
+// }
+
+// export interface Admin {
+//     name: string;
+//     age: number;
+//     role: string;
+// }
+
+// export type Person = User | Admin;
+
+// export const persons: Person[] = [
+//     {
+//         name: 'Max Mustermann',
+//         age: 25,
+//         occupation: 'Chimney sweep'
+//     },
+//     {
+        
+//         name: 'Jane Doe',
+//         age: 32,
+//         role: 'Administrator'
+//     },
+//     {
+//         name: 'Kate Müller',
+//         age: 23,
+//         occupation: 'Astronaut'
+//     },
+//     {
+        
+//         name: 'Bruce Willis',
+//         age: 64,
+//         role: 'World saver'
+//     }
+// ];
+
+// export function logPerson(person: Person) {
+//     let additionalInformation: string | undefined;
+//     if ('role' in person) {
+//         additionalInformation = person.role;
+//     } else {
+//         additionalInformation = person.occupation;
+//     }
+//     console.log(` - ${person.name}, ${person.age}. ${additionalInformation}`);
+// }
+
+// persons.forEach(logPerson);
+
+//----------------------------------------------------------
+//exercise3
+export interface User {
+    name: string;
+    age: number;
+    occupation: string;
+}
+
+export interface Admin {
+    name: string;
+    age: number;
+    role: string;
+}
+
+export type Person = User | Admin;
+
+export const persons: Person[] = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Jane Doe',
+        age: 32,
+        role: 'Administrator'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    },
+    {
+        name: 'Bruce Willis',
+        age: 64,
+        role: 'World saver'
+    }
+];
+
+export function logPerson(person: Person) {
+    let additionalInformation: string;
+
+//     // Type guard: 'role' in person narrows the type from Person to Admin
+    if ('role' in person) {
+        additionalInformation = person.role;
+    } else {
+        additionalInformation = person.occupation;
+    }
+
+    console.log(` - ${person.name}, ${person.age}. ${additionalInformation}`);
+}
+
+persons.forEach(logPerson);
+
+//
+// Union types and type Narrowing
+// interface Student{
+//     name:string;
+//     grade:number;
+// }
+// interface Teacher{
+//     name:string;
+//     subject:string;
+// }
+
+// type person=Student | Teacher;
+// export const Person :person[]=[
+//     { 
+//         name: 'criss',
+//         grade: 15
+// },
+// {name: 'HOLLEL' ,
+//     subject: 'English'
+
+// }
+
+// ]
+
+
+
+
+// function printDetails(Person:person){
+//     if('grade' in Person){
+//         console.log(`Grade is :${Person.grade}`);
+//     }else{
+//         console.log(`Subject is ${Person.subject}`)
+//     }
+
+// }
+//  Person.forEach(printDetails);
+
+// interface greet{
+//     name:string,
+//     Languege:string
+// }
+// interface jobwork{
+//     name:string,
+//     taskdone:string
+// }
+// type morningBoss= greet | jobwork;
+// const Boss:morningBoss[]=[
+//     {name: 'Karake',
+//         Languege:'Kinyarwanda : Mwaramutse neza'
+
+//     },
+//     {
+//         name:'Josue',
+//         taskdone:'making 10 reports done yesterd'
+
+
+//     }
+// ]
+// function meetBoss(Boss:morningBoss){
+//     if('Languege' in Boss){
+//         console.log(`${Boss. Languege} ${Boss.name}`)
+//     }else{
+//        console.log(`${Boss. taskdone} done by ${Boss.name}`)  
+//     }
+// }
+// Boss.forEach(meetBoss);
+
+//exercise 4 Custom Type Guard 
+
+//  interface Car{
+//     brand:string;
+//     fuelType: string;
+//  }
+//  interface Bicycle{
+//     brand : string;
+//     gearCount: number;
+//  }
+
+//  type Vehicle = Car | Bicycle ;
+//  function isCar(vehicle:Vehicle):
+//  Vehicle is Car{
+//     return 'fuelType' in vehicle;
+//  }
+//  function driveVehicle(vehicle)
